@@ -1,4 +1,4 @@
-package holamundo;
+package test.web.modulo1;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;

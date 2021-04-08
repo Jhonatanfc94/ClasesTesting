@@ -1,4 +1,4 @@
-package pom;
+package pom.web.modulo1;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

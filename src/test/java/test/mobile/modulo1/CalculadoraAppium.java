@@ -1,4 +1,4 @@
-package holamundo;
+package test.mobile.modulo1;
 
 import java.net.MalformedURLException;
 import java.net.URL;
