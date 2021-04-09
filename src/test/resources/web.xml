@@ -12,7 +12,6 @@
     </test>
 
     <test name="testWeb" >
-        <parameter name="browserName" value="firefox" />
         <classes>
             <class name="test.web.modulo1.TestWeb"/>
         </classes>

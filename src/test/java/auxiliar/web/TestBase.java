@@ -52,7 +52,6 @@ public class TestBase extends GeneralMethods {
                 }
                 break;
         }
-        driver.manage().window().maximize();
     }
 
     @AfterMethod
@@ -66,6 +65,9 @@ public class TestBase extends GeneralMethods {
         Object [][] driverOption;
         if(context.getCurrentXmlTest().getParameter("browserName")==null){
             driverOption = new Object[][]{{LocalConfiguration.web.navegador}};
+        }else if(context.getCurrentXmlTest().getParameter("browserName").equals("random")){
+            //lista con navegadores y coger uno random
+            driverOption = new Object[][]{{"poner el random aca"}};
         }else{
             driverOption = new Object [][]{{context.getCurrentXmlTest().getParameter("browserName")}};
         }
