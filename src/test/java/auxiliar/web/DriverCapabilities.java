@@ -1,14 +1,18 @@
 package auxiliar.web;
 
+import auxiliar.LocalConfiguration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxDriverLogLevel;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
@@ -52,6 +56,19 @@ public class DriverCapabilities {
     public static WebDriver localWindowsChrome() {
         System.setProperty("webdriver.chrome.driver", "Drivers\\Windows\\Chrome\\chromedriver.exe");
         ChromeDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(500, TimeUnit.SECONDS);
+        return driver;
+    }
+    public static WebDriver localWindowsChromeExtension() {
+        System.setProperty("webdriver.chrome.driver","drivers/Windows/Chrome/chromedriver.exe");
+        ChromeOptions options = new ChromeOptions();
+        File file = new File("extensions/chrome/"+ LocalConfiguration.web.extension +".crx");
+        options.addExtensions(file);
+        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        options.merge(capabilities);
+        ChromeDriver driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(500, TimeUnit.SECONDS);
         return driver;

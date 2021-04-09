@@ -4,17 +4,27 @@
         <listener class-name="auxiliar.reports.TestListener"/>
     </listeners>
 
-    <parameter name="browserName" value="firefox" />
+
     <test name = "modulo1">
+        <parameter name="browserName" value="chrome" />
         <packages>
             <package name="test.web.modulo1" />
         </packages>
     </test>
 
+
     <test name="testWeb" >
         <parameter name="browserName" value="firefox" />
         <classes>
             <class name="test.web.modulo1.TestWeb"/>
+        </classes>
+    </test>
+
+
+    <test name="testExtension">
+        <parameter name="browserName" value="chromeExtension" />
+        <classes>
+            <class name="test.web.modulo1.TestExtension"/>
         </classes>
     </test>
 </suite>
