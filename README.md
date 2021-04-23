@@ -30,6 +30,10 @@
 
 1. git bash: git clone direccionShhRepo
 
+   1.1 Para MAC para evitar el mensaje "no reconoce chromedriver":
+Abrimos la terminal y nos vamos hacia la carpeta donde se encuentra el chrome driver y corremos el siguiente comando
+    * xattr -d com.apple.quarantine chromedriver
+
 ### Ejecutar Appium
 1. cmd: appium
 2. Seleccion de dispositivo:
@@ -53,3 +57,5 @@
 Este repositorio es el resultado del conocimiento colectivo de muchas personas
 y tu puedes ser una de ellas, si tienes algun aporte no dudes en escribir al dueño
 del repositorio.
+Personas que juntaron este conocimiento:
+Carlos cotto, Angel Torre, Jhonatan Flores, Sebastian Morales

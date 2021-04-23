@@ -14,6 +14,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.io.File;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
@@ -22,6 +23,12 @@ public class DriverCapabilities {
     public static void windowDimension(WebDriver driver){
         if(LocalConfiguration.web.habilitarPantallaModificable){
             driver.manage().window().setSize(new Dimension(LocalConfiguration.web.ancho, LocalConfiguration.web.alto));
+        }else if(LocalConfiguration.web.habilitarPantallaModificableAleatoria){
+            Random rand = new Random();
+            int resolucionRandom=rand.nextInt(LocalConfiguration.web.resoluciones.length);
+            int anchoAleatorio=LocalConfiguration.web.resoluciones[resolucionRandom][0];
+            int altoAleatorio=LocalConfiguration.web.resoluciones[resolucionRandom][1];
+            driver.manage().window().setSize(new Dimension(anchoAleatorio, altoAleatorio));
         }else{
             driver.manage().window().maximize();
         }

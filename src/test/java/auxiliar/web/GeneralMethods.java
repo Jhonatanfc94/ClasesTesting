@@ -21,7 +21,6 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.logging.Level;
 
 public class GeneralMethods {
     private final String windows="Windows 10";

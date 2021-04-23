@@ -4,13 +4,7 @@
         <listener class-name="auxiliar.reports.TestListener"/>
     </listeners>
 
-    <parameter name="browserName" value="chromeExtension" />
-    <test name = "modulo1">
-        <packages>
-            <package name="test.web.modulo1" />
-        </packages>
-    </test>
-
+    <parameter name="browserName" value="chrome" />
     <test name="testWeb" >
         <classes>
             <class name="test.web.modulo1.TestWeb"/>

@@ -1,5 +1,6 @@
 package auxiliar.tools;
 
+import auxiliar.Data;
 import org.testng.Assert;
 
 import javax.activation.DataHandler;
@@ -13,8 +14,8 @@ public class GmailReader {
     static Session session;
     static Store store;
 
-    final static String USUARIO = "xik@ufm.edu";
-    final static String CONTRASENA = "xik$ufm$2018";
+    final static String USUARIO = Data.emailTesting.user;
+    final static String CONTRASENA = Data.emailTesting.password;
 
     final static String HOST = "smtp.gmail.com";
     final static String PROTOCOLO = "imaps";

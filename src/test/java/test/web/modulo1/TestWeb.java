@@ -1,6 +1,7 @@
 package test.web.modulo1;
 
 import auxiliar.web.TestBase;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 public class TestWeb extends TestBase {

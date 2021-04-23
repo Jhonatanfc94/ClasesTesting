@@ -19,6 +19,7 @@ public class CalculadoraAppium {
         capabilities.setCapability("platformVersion", "10");
 
         capabilities.setCapability("appPackage", "com.google.android.calculator");
+        //adb devices
         //adb shell dumpsys  activity
         //adb shell "dumpsys activity activities | grep mResumedActivity"
 
