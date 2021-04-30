@@ -1,25 +1,29 @@
 package auxiliar.tools;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 public class HttpConnect {
-    public static String obtenerCodigoRespuestaLink(String linkUrl) {
-        String respuesta="No se lleno la respuesta";
-        try {
-            URL url = new URL(linkUrl);
-            HttpURLConnection httpURLConnect=(HttpURLConnection)url.openConnection();
-            httpURLConnect.setConnectTimeout(3000);
-            httpURLConnect.connect();
-            if(httpURLConnect.getResponseCode()==200) {
-                System.out.println(linkUrl+" - "+httpURLConnect.getResponseMessage());
-                respuesta=httpURLConnect.getResponseMessage();
-            }
-            if(httpURLConnect.getResponseCode()==HttpURLConnection.HTTP_NOT_FOUND) {
-                System.out.println(linkUrl+" - "+httpURLConnect.getResponseMessage() + " - "+ HttpURLConnection.HTTP_NOT_FOUND);
-                respuesta=httpURLConnect.getResponseMessage() + " - "+ HttpURLConnection.HTTP_NOT_FOUND;
-            }
-        } catch (Exception ignored) { }
-        return respuesta;
+
+    public static HttpResponse<String> HttpSendRequest(String url,String key){
+        HttpResponse<String> response=null;
+        String apiToken=key;
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .header("Content-Type", "application/json")
+                //.header("X-TrackerToken",apiToken)
+                .header("X-TrackerToken",apiToken)
+                .build();
+        try{
+            response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println(response.statusCode());
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return response;
     }
 }
