@@ -5,17 +5,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Ponderador {
-    //[[package,browser][package,browser]]
-    String[][] browsersWeight={{"chrome","0.6"},{"firefox","0.4"}};
+    String[][] browsersWeight={{"chrome","0.6"},{"android","1.0"},{"firefox","0.4"}};
 
 
-    String[][] packageWeight;
+    List<List<String>> packageWeight;
     List<String> allnamePackages;
     List<String> allPackageWeight;
-    public Ponderador(String[][] navegadoresXML){
+    List<String> allPackageWeightTotal;
+    public Ponderador(List<List<String>> navegadoresXML){
         this.packageWeight =navegadoresXML;
         allnamePackages=new ArrayList<>();
         allPackageWeight=new ArrayList<>();
+        allPackageWeightTotal= new ArrayList<>();
     }
 
     public void go(){
@@ -23,12 +24,12 @@ public class Ponderador {
     }
 
     public void getWeightAndNames(){
-        for(int i = 0; i< packageWeight.length; i++){
-            for(int j = 0; j< packageWeight[i].length; j++){
-                if(j==0){
-                    allnamePackages.add(packageWeight[i][j]);
+        for(int i = 0; i< packageWeight.size(); i++){
+            for(int j = 0; j< packageWeight.get(i).size(); j++){
+                if(j==1){
+                    allnamePackages.add(packageWeight.get(i).get(j));
                 }else{
-                    packageWeight[i][j]= calcularValorLista(packageWeight[i][j]);
+                    allPackageWeight.add(calcularValorLista(packageWeight.get(i).get(j).replace("\"","")));
                 }
             }
         }
@@ -47,9 +48,9 @@ public class Ponderador {
 
     public void imprimirListaWeight(){
         System.out.println("PACKAGE | VALUE |");
-        for(int i = 0; i< packageWeight.length; i++){
-            for(int j = 0; j< packageWeight[i].length; j++){
-                System.out.print(packageWeight[i][j]+" | ");
+        for(int i = 0; i< packageWeight.size(); i++){
+            for(int j = 0; j< packageWeight.get(i).size(); j++){
+                System.out.print(packageWeight.get(i).get(j)+" | ");
             }
             System.out.println();
         }
@@ -58,17 +59,17 @@ public class Ponderador {
     public void sumarValorLista(){
         for(String browserActual:allnamePackages){
             Double total=0.00;
-            for(int i = 0; i< packageWeight.length; i++){
-                if(packageWeight[i][0].equals(browserActual)){
-                    total=total+Double.parseDouble(packageWeight[i][1]);
+            for(int i = 0; i< packageWeight.size(); i++){
+                if(packageWeight.get(i).get(1).equals(browserActual)){
+                    total=total+Double.parseDouble(allPackageWeight.get(i));
                 }
             }
-            allPackageWeight.add((total*100)+"");
+            allPackageWeightTotal.add((total*100)+"");
         }
     }
 
     public void imprimirResultado(){
         System.out.println(allnamePackages);
-        System.out.println(allPackageWeight);
+        System.out.println(allPackageWeightTotal);
     }
 }

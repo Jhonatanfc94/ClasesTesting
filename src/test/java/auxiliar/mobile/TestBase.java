@@ -36,6 +36,5 @@ public class TestBase{
     @AfterClass
     public void closeApp(){
         driver.closeApp();
-        server.stop();
     }
 }

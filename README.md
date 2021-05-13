@@ -58,4 +58,4 @@ Este repositorio es el resultado del conocimiento colectivo de muchas personas
 y tu puedes ser una de ellas, si tienes algun aporte no dudes en escribir al dueño
 del repositorio.
 Personas que juntaron este conocimiento:
-Carlos cotto, Angel Torre, Jhonatan Flores, Sebastian Morales
+Carlos cotto, Angel Torre, Jhonatan Flores, Carlos Arroyave, Christian Brolo.

@@ -7,15 +7,13 @@ import java.net.http.HttpResponse;
 
 public class HttpConnect {
 
-    public static HttpResponse<String> HttpSendRequest(String url,String key){
+    public static HttpResponse<String> HttpSendRequest(String url,String keyName,String key){
         HttpResponse<String> response=null;
-        String apiToken=key;
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .header("Content-Type", "application/json")
-                //.header("X-TrackerToken",apiToken)
-                .header("X-TrackerToken",apiToken)
+                .header(keyName,key)
                 .build();
         try{
             response = client.send(request, HttpResponse.BodyHandlers.ofString());

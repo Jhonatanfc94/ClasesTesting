@@ -14,11 +14,11 @@ public class Login {
     AjaxElementLocatorFactory ajaxElementLocatorFactory;
 
     @FindBy(xpath="//input[@name='session[username_or_email]']")
-    WebElement txtUsuario;
+    public WebElement txtUsuario;
     @FindBy(xpath="//input[@name='session[password]']")
-    WebElement txtPassword;
+    public WebElement txtPassword;
     @FindBy(xpath="//span[text()='Log in']")
-    WebElement botonLogin;
+    public WebElement botonLogin;
 
     public Login(WebDriver driver){
         this.driver=driver;

@@ -4,11 +4,7 @@ import auxiliar.web.TestBase;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-/**
- * story: nombre story
- * ID story: numero
- *
-**/
+
 public class TestExtension extends TestBase {
 
     @Test(dataProvider = "web")

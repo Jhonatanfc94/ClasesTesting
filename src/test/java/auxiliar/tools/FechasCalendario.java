@@ -1,5 +1,6 @@
 package auxiliar.tools;
 
+import auxiliar.Data;
 import org.testng.Assert;
 
 import java.text.SimpleDateFormat;
@@ -10,7 +11,7 @@ import java.util.logging.Level;
 public class FechasCalendario {
     private static final java.util.logging.Logger LOGGER = java.util.logging.Logger.getLogger( FechasCalendario.class.getName() );
     private static String patron = "yyyy-MM-dd";
-    private static String timeZone ="America/Guatemala";
+    private static String timeZone = Data.time.timeZone;
 
     private static Date revisarPatron(String fechaString){
         SimpleDateFormat formato = new SimpleDateFormat(patron);
@@ -49,25 +50,19 @@ public class FechasCalendario {
             long tiempoFinal = fechaFinal.getTime();
             long tiempoDiferencia = tiempoFinal - tiempoInicial;
             switch(unidadDeTiempo) {
-                case "segundo":
-                case "segundos":{
+                case "second":{
                     tiempoDiferencia = tiempoDiferencia/1000;
                     break;
                 }
-                case "minuto":
-                case "minutos":{
+                case "minute":{
                     tiempoDiferencia = tiempoDiferencia/(1000*60);
                     break;
                 }
-                case "hora":
-                case "horas":{
+                case "hour":{
                     tiempoDiferencia = tiempoDiferencia/(1000*60*60);
                     break;
                 }
-                case "día":
-                case "dia":
-                case "días":
-                case "dias":{
+                case "day":{
                     tiempoDiferencia = tiempoDiferencia/(1000*60*60*24);
                     break;
                 }
@@ -134,13 +129,6 @@ public class FechasCalendario {
         return fechaFormato;
     }
 
-    public static String obtenerFechaDiagonales(){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        simpleDateFormat.setTimeZone(TimeZone.getTimeZone(timeZone));
-        Date date = new Date();
-        return simpleDateFormat.format(date);
-    }
-
     public static String sumarRestar(String fecha, String unidadDeTiempo, int cantidad) {
         String fechaBuena=fecha;
         if(patron.contains("-")){
@@ -154,38 +142,27 @@ public class FechasCalendario {
 
         switch(unidadDeTiempo) {
 
-            case "minuto":
-            case "minutos":{
+            case "minute":{
                 calendar.add(Calendar.MINUTE, cantidad);
                 break;
             }
 
-            case "hora":
-            case "horas":{
+            case "hour":{
                 calendar.add(Calendar.HOUR, cantidad);
                 break;
             }
 
-            case "día":
-            case "dia":
-            case "días":
-            case "dias":{
+            case "day":{
                 calendar.add(Calendar.DAY_OF_YEAR, cantidad);
                 break;
             }
 
-            case "meses":
-            case "mes":{
+            case "month":{
                 calendar.add(Calendar.MONTH, cantidad);
                 break;
             }
 
-            case "año":
-            case "anio":
-            case "ano":
-            case "años":
-            case "anios":
-            case "anos":{
+            case "year":{
                 calendar.add(Calendar.YEAR , cantidad);
                 break;
             }
@@ -199,8 +176,8 @@ public class FechasCalendario {
         return sdf.format(temporal);
     }
 
-    private static Date dateFechaDiagonal(String fechaCambio){
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+    private static Date dateFecha(String fechaCambio){
+        SimpleDateFormat formato = new SimpleDateFormat(patron);
         formato.setTimeZone(TimeZone.getTimeZone(timeZone));
         Date fecha = null;
         try{
@@ -222,11 +199,10 @@ public class FechasCalendario {
         return fechaDividida[2]+"/"+fechaDividida[1]+"/"+fechaDividida[0];
     }
 
-    //dd/MM/yyyy
     public static List<String> ordenarFechasAscendente(List<String> listaFechas){
         List<Date> fechas=new ArrayList<>();
         for(String fechaStr:listaFechas){
-            fechas.add(FechasCalendario.dateFechaDiagonal(fechaStr));
+            fechas.add(FechasCalendario.dateFecha(fechaStr));
         }
         for(int i=0;i<fechas.size();i++){
             for(int j=0;j<fechas.size();j++){
@@ -280,7 +256,7 @@ public class FechasCalendario {
 
         while(obtenerDiferenciaDeTiempoEntreFechas(fechaTemporal, fechaTemporalFinal, "días") >= 0) {
             fechasDelRango.add(fechaTemporal);
-            fechaTemporal = sumarRestar(fechaTemporal, "días", 1);
+            fechaTemporal = sumarRestar(fechaTemporal, "day", 1);
         }
 
         System.out.println("Diferencia entre fechas: " + obtenerDiferenciaDeTiempoEntreFechas(fechaTemporalFinal, fechaTemporal, "días"));

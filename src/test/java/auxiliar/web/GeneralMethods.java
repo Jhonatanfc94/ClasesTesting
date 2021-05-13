@@ -332,7 +332,7 @@ public class GeneralMethods {
         String cuerpoCorreo = "<strong> Clase: </strong>[" + clase + "]" + "<br />" +
                 "<strong>Método:</strong>. [" + metodo + "]" + "<br />" +
                 "<strong>Motivo de fallo:</strong> " + messageRegresion;
-        EnviarCorreo.enviarCorreo(asuntoCorreo, cuerpoCorreo);
+        EnviarCorreo.enviarCorreoConCaptura(asuntoCorreo, cuerpoCorreo);
         Assert.fail(messageRegresion);
     }
 
