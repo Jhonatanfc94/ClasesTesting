@@ -30,7 +30,7 @@ public class GetBuild {
         requestMethods = new RequestMethods();
         headerlist = new ArrayList<Header>();
         headerlist.add(new Header("Content=Type", "application/json"));
-        headerlist.add(new Header("X-Api-Token", "85b34583ada4e16da700f9e17d8357720866bd45"));
+        headerlist.add(new Header("X-Api-Token", "token"));
         headers = new Headers(headerlist);
         for (int i=0;i<50;i++){
             String idStr=String.valueOf(text.get(i));

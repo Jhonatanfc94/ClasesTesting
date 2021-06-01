@@ -13,16 +13,7 @@ public class LocalConfiguration {
     }
 
     public static class mobileCapabilities{
-        /**
-        public final static String deviceName = "Angel Torre";
-        public final static String udId = "emulator-5554";
-        public final static String platformName = "Android";
-        public final static String platformVersion = "10";
-        public final static String appPackage = "com.android.chrome";
-        public final static String appActivity = "com.google.android.apps.chrome.Main";
-        public final static String bundleId = "";
-        public final static String xcodeOrgId = "";
-         **/
+
         public final static String deviceName = "Mi A2 Lite";
         public final static String udId = "73a6a2480405";
         public final static String platformName = "Android";
