@@ -22,6 +22,7 @@ public class CalculadoraAppium {
         //adb devices
         //adb shell dumpsys  activity
         //adb shell "dumpsys activity activities | grep mResumedActivity"
+        //mResumedActivity: ActivityRecord{73d0dbe u0 com.poqstudio.app.platform.missguided/com.poqstudio.app.platform.presentation.main.view.BottomNavigationActivity t289}
 
         capabilities.setCapability("appActivity","com.android.calculator2.Calculator");
         URL url = new URL("http://localhost:4723/wd/hub");

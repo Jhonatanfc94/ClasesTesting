@@ -105,6 +105,15 @@ public class GeneralMethods {
         }
         return elemento.getText();
     }
+    public String getTextoDeElementoNoVisible(WebElement elemento, WebDriver driver){
+        try{
+            goToElement(elemento,driver);
+            highlight(driver,elemento);
+        }catch (Exception e) {
+            Assert.fail(e.getMessage());
+        }
+        return elemento.getText();
+    }
 
     //SELECT
     public void selectOptionByText(WebElement select, String option, WebDriver driver, WebDriverWait wait){

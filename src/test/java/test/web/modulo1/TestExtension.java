@@ -19,10 +19,5 @@ public class TestExtension extends TestBase {
             System.out.println(subida);
         }
     }
-
-    @AfterMethod
-    public void cerrarDriver(){
-        driver.quit();
-    }
 }
 

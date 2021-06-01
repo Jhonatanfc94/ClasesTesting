@@ -10,16 +10,17 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
-public class TestBase{
+public class TestBase extends GeneralMethods{
     public AppiumDriver<MobileElement> driver;
     public AppiumDriverLocalService server;
     AppiumServiceBuilder serverBuilder;
     DesiredCapabilities desiredCapabilities;
 
     @BeforeClass
-    public void setUp() {
+    public void setUp() throws MalformedURLException {
         serverBuilder = new AppiumServiceBuilder();
         serverBuilder.usingAnyFreePort();
         serverBuilder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
