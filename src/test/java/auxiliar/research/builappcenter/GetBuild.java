@@ -11,7 +11,7 @@ import java.util.List;
 
 public class GetBuild {
     public static void main(String[] args) {
-        String releaseBuscado="2119";
+        String releaseBuscado="1993";
         obtenerRealese("DEV-Android",releaseBuscado);
         obtenerRealese("DEV-iOS",releaseBuscado);
     }
@@ -30,9 +30,9 @@ public class GetBuild {
         requestMethods = new RequestMethods();
         headerlist = new ArrayList<Header>();
         headerlist.add(new Header("Content=Type", "application/json"));
-        headerlist.add(new Header("X-Api-Token", "token"));
+        headerlist.add(new Header("X-Api-Token", "85b34583ada4e16da700f9e17d8357720866bd45"));
         headers = new Headers(headerlist);
-        for (int i=0;i<50;i++){
+        for (int i=0;i<30;i++){
             String idStr=String.valueOf(text.get(i));
             response = requestMethods.multiHeadersGetRequest("https://api.appcenter.ms/v0.1/apps/GMF-Digital-Banking/"+os+"/releases/"+idStr, headers);
             jsonPath = response.jsonPath();

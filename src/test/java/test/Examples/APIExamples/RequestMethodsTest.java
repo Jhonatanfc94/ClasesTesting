@@ -18,7 +18,7 @@ public class RequestMethodsTest {
         RequestMethods requestMethods = new RequestMethods();
         List<Header> headerList = new ArrayList<>();
         headerList.add(new Header("Content=Type", "application/json"));
-        headerList.add(new Header("X-Api-Token", "token"));
+        headerList.add(new Header("X-Api-Token", "5f89541d69f78740a69e54df9b8fa32c7f7a1004"));
         Headers headers = new Headers(headerList);
         Response response = requestMethods.multiHeadersGetRequest("https://api.appcenter.ms/v0.1/apps/GMF-Digital-Banking/DEV-Android/releases/latest", headers);
         JsonPath jsonPath = response.jsonPath();

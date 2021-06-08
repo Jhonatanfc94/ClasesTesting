@@ -30,4 +30,18 @@ public class DriverCapabilities {
         desiredCapabilities.setCapability("automationName", "XCUITest");
         return desiredCapabilities;
     }
+
+    public static DesiredCapabilities kobiton(){
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+        desiredCapabilities.setCapability("sessionName", LocalConfiguration.mobileCapabilities.sessionName);
+        desiredCapabilities.setCapability("sessionDescription", LocalConfiguration.mobileCapabilities.sessionDescription);
+        desiredCapabilities.setCapability("captureScreenshots", LocalConfiguration.mobileCapabilities.captureScreenshots);
+        desiredCapabilities.setCapability("app", LocalConfiguration.mobileCapabilities.app);
+        desiredCapabilities.setCapability("groupId", LocalConfiguration.mobileCapabilities.groupId);
+        desiredCapabilities.setCapability("deviceGroup", LocalConfiguration.mobileCapabilities.deviceGroup);
+        desiredCapabilities.setCapability("deviceName", LocalConfiguration.mobileCapabilities.kobitonDeviceName);
+        desiredCapabilities.setCapability("platformVersion", LocalConfiguration.mobileCapabilities.kobitonPlatformVersion);
+        desiredCapabilities.setCapability("platformName", LocalConfiguration.mobileCapabilities.kobitonPlatformName);
+        return desiredCapabilities;
+    }
 }

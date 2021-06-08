@@ -10,28 +10,53 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class TestBase extends GeneralMethods{
+public class TestBase{
     public AppiumDriver<MobileElement> driver;
     public AppiumDriverLocalService server;
-    AppiumServiceBuilder serverBuilder;
     DesiredCapabilities desiredCapabilities;
 
     @BeforeClass
-    public void setUp() throws MalformedURLException {
-        serverBuilder = new AppiumServiceBuilder();
+    public void setUp() {
+        URL url;
+        switch (LocalConfiguration.mobileCapabilities.environment) {
+            case "kobiton" -> {
+                desiredCapabilities = DriverCapabilities.kobiton();
+                url = createURL();
+            }
+            case "iOS" -> {
+                desiredCapabilities = DriverCapabilities.iOS();
+                url = urlServer();
+            }
+            default -> {
+                desiredCapabilities = DriverCapabilities.android();
+                url = urlServer();
+            }
+        }
+        assert url != null;
+        driver = new AppiumDriver<>(url, desiredCapabilities);
+        driver.manage().timeouts().implicitlyWait(30L, TimeUnit.SECONDS);
+    }
+
+    private URL createURL() {
+        try {
+            return new URL(LocalConfiguration.mobileCapabilities.kobitonServerUrl);
+        } catch (Exception Error) {
+            Error.printStackTrace();
+            return null;
+        }
+    }
+
+    private URL urlServer(){
+        AppiumServiceBuilder serverBuilder = new AppiumServiceBuilder();
         serverBuilder.usingAnyFreePort();
         serverBuilder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
+
         server = AppiumDriverLocalService.buildService(serverBuilder);
         server.start();
-        switch (LocalConfiguration.mobileCapabilities.platformName){
-            case "iOS": desiredCapabilities = DriverCapabilities.iOS();
-            default: desiredCapabilities = DriverCapabilities.android();
-        }
-        driver = new AppiumDriver<>(server.getUrl(), desiredCapabilities);
-        driver.manage().timeouts().implicitlyWait(30L, TimeUnit.SECONDS);
+        return server.getUrl();
     }
 
     @AfterClass
