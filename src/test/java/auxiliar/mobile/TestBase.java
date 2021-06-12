@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeClass;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class TestBase{
+public class TestBase extends GeneralMethods{
     public AppiumDriver<MobileElement> driver;
     public AppiumDriverLocalService server;
     DesiredCapabilities desiredCapabilities;

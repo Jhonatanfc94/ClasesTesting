@@ -4,6 +4,7 @@ import io.restassured.http.Headers;
 import io.restassured.response.Response;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
@@ -48,7 +49,7 @@ public class RequestMethods {
                 .response();
     }
 
-    public Response makePostRequest(String url, HashMap body) {
+    public Response makePostRequest(String url, Map<String,Object> body) {
         return given()
                 .header("Content=Type", "application/json")
                 .body(body)
@@ -58,4 +59,19 @@ public class RequestMethods {
                 .extract()
                 .response();
     }
+    public Response makePostMultiheaders(String url, Headers headers, Map<String,Object> body) {
+        return given()
+                //.urlEncodingEnabled(false)
+                //.log()
+                //.all()
+                //.urlEncodingEnabled(true)
+                .headers(headers)
+                .body(body)
+                .when()
+                .post(url)
+                .then()
+                .extract()
+                .response();
+    }
+
 }

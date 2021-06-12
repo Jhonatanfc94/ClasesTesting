@@ -7,9 +7,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class RequestMethodsTest {
 
@@ -55,7 +53,7 @@ public class RequestMethodsTest {
     @Test
     public void post() {
         String url = "https://reqres.in/api/users";
-        HashMap<String, String> hash_map = new HashMap<>();
+        Map<String, Object> hash_map = new LinkedHashMap<>();
         hash_map.put("name", "Angel");
         hash_map.put("job", "QA");
         RequestMethods requestMethods = new RequestMethods();
