@@ -2,7 +2,7 @@ package auxiliar;
 
 public class LocalConfiguration {
     public static class web {
-        public final static String navegador = "firefox";
+        public final static String navegador = "chrome";
         public final static String extension = "speedTest";
 
         public final static boolean habilitarPantallaModificable=false;
